@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneAM — Why Choose Us (B: Rows)</title>
+<link rel="stylesheet" href="brand.css">
+
+<style>
+:root {
+  --bg-card: var(--white);
+  --border-warm: var(--color-border-light);
+  --text-primary: var(--navy);
+  --accent-fuchsia: var(--fuchsia);
+  --font-heading: var(--font-brand);
+  --max-width: 1140px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.why-choose {
+  padding: clamp(80px, 12vw, 140px) 0;
+  background: var(--white);
+}
+
+.why-choose__divider {
+  width: clamp(104px, 14vw, 160px);
+  height: 1px;
+  background: var(--border-warm);
+  margin: 0 auto clamp(28px, 4vw, 40px);
+}
+
+.why-choose-heading {
+  text-align: center;
+  margin-bottom: clamp(8px, 1vw, 16px);
+}
+
+.why-choose-heading h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+.why-choose-sub {
+  text-align: center;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 500;
+  color: var(--accent-fuchsia);
+  margin: 0 auto clamp(56px, 7vw, 80px);
+  max-width: 520px;
+}
+
+.why-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  padding: clamp(12px, 2vw, 18px) 0;
+}
+
+.why-item + .why-item {
+  border-top: 1px solid var(--border-warm);
+}
+
+.why-item-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.why-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.why-icon svg,
+.why-icon img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.why-icon svg {
+  stroke: var(--accent-fuchsia);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-item-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 4px;
+  max-width: 700px;
+  text-align: center;
+}
+
+.why-item-label {
+  font-family: var(--font-heading);
+  font-size: clamp(1.12rem, 1.65vw, 1.32rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.why-item p {
+  margin: 0;
+  font-size: clamp(1.03rem, 1.22vw, 1.1rem);
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+</style>
+</head>
+<body>
+
+<section class="why-choose" id="why">
+  <div class="container">
+    <div class="why-choose__divider" aria-hidden="true"></div>
+    <div class="why-choose-heading">
+      <h2>Why businesses choose OneAM</h2>
+    </div>
+    <p class="why-choose-sub">Four reasons our customers stay.</p>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-item-header">
+          <div class="why-icon" aria-hidden="true">
+            <img src="fast.png" alt="">
+          </div>
+          <div class="why-item-copy">
+            <div class="why-item-label">Fast</div>
+            <p>Onboard in 15 minutes. Start receiving funding offers in days, not weeks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-header">
+          <div class="why-icon" aria-hidden="true">
+            <img src="fair.png" alt="">
+          </div>
+          <div class="why-item-copy">
+            <div class="why-item-label">Fair</div>
+            <p>Transparent pricing. No hidden fees, ever.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-header">
+          <div class="why-icon" aria-hidden="true">
+            <img src="flexible.png" alt="">
+          </div>
+          <div class="why-item-copy">
+            <div class="why-item-label">Flexible</div>
+            <p>Choose which invoices to fund, and when. No commitments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-item">
+        <div class="why-item-header">
+          <div class="why-icon" aria-hidden="true">
+            <img src="friendly.png" alt="">
+          </div>
+          <div class="why-item-copy">
+            <div class="why-item-label">Business-friendly</div>
+            <p>Your customer relationships stay untouched. You stay in control.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

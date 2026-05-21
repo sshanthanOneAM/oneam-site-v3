@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneAM — Navigate Your Cash Flow With Confidence</title>
+<meta name="description" content="OneAM helps businesses unlock the capital sitting in their receivables. No debt. No equity. Just your invoices, on your timeline.">
+<link rel="stylesheet" href="brand.css">
+
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  --bg-parchment:    var(--color-bg-subtle);
+  --bg-card:         var(--white);
+  --border-warm:     var(--color-border-light);
+  --text-primary:    var(--navy);
+  --accent-fuchsia:  var(--fuchsia);
+  --path-color:      var(--teal-alpha-30);
+  --font-heading:    var(--font-brand);
+  --font-body:       var(--font-brand);
+  --max-width:       1140px;
+  --radius:          12px;
+  --shadow-soft:     0 2px 16px var(--navy-alpha-06);
+  --shadow-nav:      0 1px 8px var(--white-08);
+  --transition-base: 0.3s ease;
+}
+
+body {
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: var(--fw-light);
+  background-color: var(--white);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { transition: color var(--transition-base); }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+
+p {
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  color: var(--text-primary);
+  line-height: 1.75;
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-fuchsia);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent-fuchsia);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-fuchsia-sm);
+}
+
+.btn-primary:hover {
+  background: var(--fuchsia-deep);
+  color: var(--color-text-on-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-fuchsia-md);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-navy-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--navy-80);
+  color: var(--color-text-on-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-navy-md);
+}
+
+.btn-secondary-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-navy-sm);
+}
+
+.btn-secondary-sm:hover {
+  background: var(--navy-80);
+  color: var(--color-text-on-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-navy-md);
+}
+
+/* Light button variant — for use on dark (navy) backgrounds */
+.btn-light-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-navy-sm);
+}
+
+.btn-secondary-sm,
+.btn-light-sm {
+  font-size: 0.88rem;
+  letter-spacing: 0.015em;
+}
+
+.btn-light-sm:hover {
+  background: var(--navy-20);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-sm:hover .arrow,
+.btn-light-sm:hover .arrow { transform: translateX(4px); }
+
+.arrow {
+  display: inline-block;
+  color: inherit;
+  font-weight: 600;
+  transition: transform var(--transition-base);
+}
+
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-secondary:hover .arrow { transform: translateX(4px); }
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+/* ========================================
+   NAVIGATION — dark navy
+   ======================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--navy);
+  transition: border-color var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.scrolled {
+  border-bottom-color: var(--white-08);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nav-logo img {
+  height: 30px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 36px);
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: color var(--transition-base);
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  transition: opacity var(--transition-base);
+}
+
+.nav-cta.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-cta .btn-primary {
+  padding: 10px 24px;
+  font-size: 0.85rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile menu — dark */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--navy);
+  z-index: 999;
+  padding: 32px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--white-08);
+  display: block;
+}
+
+.mobile-menu .btn-primary {
+  margin-top: 24px;
+  text-align: center;
+  justify-content: center;
+}
+
+/* ========================================
+   HERO — parchment background
+   ======================================== */
+.hero {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 10vw, 120px);
+  text-align: center;
+  position: relative;
+  background: var(--white);
+  border-bottom-left-radius: 50% 80px;
+  border-bottom-right-radius: 50% 80px;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero h1 { margin-bottom: 1.25rem; }
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* ========================================
+   HOW IT WORKS — parchment background
+   ======================================== */
+.how-it-works {
+  padding: calc(clamp(60px, 8vw, 100px) + 80px) 0 clamp(80px, 12vw, 140px);
+  background: var(--color-bg-subtle);
+  position: relative;
+  margin-top: -80px;
+}
+
+.how-it-works-heading {
+  text-align: center;
+  margin-bottom: clamp(6px, 1vw, 10px);
+}
+
+.how-it-works-sub {
+  text-align: center;
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  font-weight: 500;
+  color: var(--accent-fuchsia);
+  margin: 0 auto clamp(40px, 5vw, 60px);
+  max-width: 520px;
+}
+
+.how-it-works-cta {
+  text-align: center;
+  margin-top: clamp(40px, 5vw, 56px);
+}
+
+.steps-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.steps-path-vertical {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  bottom: 28px;
+  width: 2px;
+}
+
+.steps-path-vertical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--path-color) 0px,
+    var(--path-color) 8px,
+    transparent 8px,
+    transparent 14px
+  );
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.4s ease-in-out;
+}
+
+.step-item {
+  display: flex;
+  gap: clamp(20px, 3vw, 32px);
+  padding: clamp(28px, 4vw, 40px) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-waypoint {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-fuchsia);
+  color: var(--color-text-on-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 1.1rem;
+  box-shadow: 0 0 0 8px var(--color-bg-subtle), 0 0 0 10px var(--fuchsia-alpha-30);
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.step-waypoint.animate { animation: pulse 2.5s ease-in-out infinite; }
+
+.step-content {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.steps-grid.line-visible .steps-path-vertical::before { transform: scaleY(1); }
+
+.steps-grid.line-visible .step-item:nth-child(2) .step-waypoint { opacity: 1; transition-delay: 0.10s; }
+.steps-grid.line-visible .step-item:nth-child(3) .step-waypoint { opacity: 1; transition-delay: 0.45s; }
+.steps-grid.line-visible .step-item:nth-child(4) .step-waypoint { opacity: 1; transition-delay: 0.80s; }
+.steps-grid.line-visible .step-item:nth-child(5) .step-waypoint { opacity: 1; transition-delay: 1.15s; }
+
+.steps-grid.line-visible .step-item:nth-child(2) .step-content { opacity: 1; transition-delay: 0.25s; }
+.steps-grid.line-visible .step-item:nth-child(3) .step-content { opacity: 1; transition-delay: 0.60s; }
+.steps-grid.line-visible .step-item:nth-child(4) .step-content { opacity: 1; transition-delay: 0.95s; }
+.steps-grid.line-visible .step-item:nth-child(5) .step-content { opacity: 1; transition-delay: 1.30s; }
+
+.step-content h3 {
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+}
+
+.step-content p { line-height: 1.8; }
+
+/* ========================================
+   WHY CHOOSE ONEEAM — white
+   ======================================== */
+.why-choose {
+  padding: clamp(80px, 12vw, 140px) 0;
+  background: var(--white);
+}
+
+.why-choose-heading {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.why-choose-sub {
+  text-align: center;
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  font-weight: 500;
+  color: var(--accent-fuchsia);
+  line-height: 1.7;
+  margin: 0 auto clamp(48px, 7vw, 80px);
+  max-width: 520px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.why-item {
+  position: relative;
+  background: var(--white);
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 40px) clamp(22px, 2.5vw, 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: default;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  box-shadow:
+    -2px -2px 0 var(--color-bg-subtle),
+     4px  4px 0 var(--teal-alpha-15),
+     0 8px 32px var(--navy-alpha-08);
+}
+
+.why-icon {
+  flex-shrink: 0;
+}
+
+.why-icon svg {
+  width: 35px;
+  height: 35px;
+  stroke: var(--navy);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-item h3 {
+  color: var(--fuchsia);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.25;
+}
+
+.why-item p {
+  color: var(--navy);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* ========================================
+   BUILT FOR AMERICAN BUSINESSES — navy block
+   ======================================== */
+.american-biz {
+  padding: clamp(72px, 10vw, 120px) 0 clamp(72px, 10vw, 120px);
+  background: var(--navy);
+}
+
+.american-biz__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.american-biz h2 {
+  color: var(--white);
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.american-biz .section-label {
+  color: var(--fuchsia-60);
+}
+
+.american-biz p {
+  color: var(--white);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.american-biz p:last-of-type { margin-bottom: 0; }
+
+.american-biz__cta { margin-top: clamp(28px, 3.5vw, 40px); }
+
+.american-biz__img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 32px var(--navy-alpha-20);
+}
+
+.american-biz__img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   TESTIMONIALS — parchment
+   ======================================== */
+.testimonials {
+  padding: clamp(80px, 12vw, 140px) 0;
+  background: var(---white);
+}
+
+.testimonials .section-label { text-align: center; }
+
+.testimonials-heading {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 64px);
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 28px);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  /* border: 1px solid var(--border-warm); */
+  border-radius: var(--radius);
+  padding: clamp(28px, 3.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  box-shadow:
+  -2px -2px 0 var(--color-bg-subtle),
+    4px  4px 0 var(--teal-alpha-15),
+    0 8px 32px var(--navy-alpha-08);
+}
+
+
+
+.testimonial-mark {
+  font-family: var(--font-heading);
+  font-size: 4.8rem;
+  color: var(--accent-fuchsia);
+  line-height: 0.8;
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-quote {
+  font-size: clamp(1.0rem, 1.35vw, 1.1rem);
+  line-height: 1.8;
+  flex: 1;
+}
+
+/* ========================================
+   EARLY PAY — white
+   ======================================== */
+.early-pay {
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--color-bg-subtle);
+}
+
+.early-pay__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(32px, 4vw, 48px) 0;
+}
+
+.early-pay h2 { margin-bottom: clamp(24px, 3vw, 36px); }
+
+.early-pay p {
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.early-pay p:last-of-type { margin-bottom: 0; }
+
+.early-pay__cta { margin-top: clamp(32px, 4vw, 48px); }
+
+/* ========================================
+   FINAL CTA — parchment
+   ======================================== */
+.final-cta {
+  padding: clamp(60px, 9vw, 100px) 0;
+  text-align: center;
+  background: var(--white);
+}
+
+.cta-waypoint-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.cta-waypoint-icon svg {
+  width: 35px;
+  height: 35px;
+  stroke: var(--fuchsia);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.final-cta h2 {
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-cta .btn-primary { margin-top: 0.25rem; }
+
+.final-cta .cta-subtext {
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  line-height: 1.8;
+  color: var(--text-primary);
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--navy);
+  padding: clamp(56px, 8vw, 80px) 0 clamp(28px, 4vw, 40px);
+  text-align: center;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+  margin: 0 auto clamp(16px, 2.5vw, 22px);
+}
+
+.footer-tagline {
+  color: var(--white-45);
+  max-width: 460px;
+  margin: 0 auto clamp(36px, 5vw, 52px);
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px 0;
+  margin-bottom: clamp(10px, 1.5vw, 14px);
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  color: var(--color-text-on-dark);
+  transition: color var(--transition-base);
+}
+
+.footer-links a:hover { color: var(--white-70); }
+
+.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px 0;
+  margin-bottom: clamp(36px, 5vw, 52px);
+}
+
+.footer-contact a,
+.footer-contact span {
+  font-size: 0.88rem;
+  color: var(--color-text-on-dark);
+  transition: color var(--transition-base);
+}
+
+.footer-contact a:hover { color: var(--white-70); }
+
+.footer-sep {
+  color: var(--white-18);
+  margin: 0 10px;
+  font-size: 0.88rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--white-08);
+  padding-top: clamp(18px, 2.5vw, 24px);
+}
+
+.footer-bottom p {
+  color: var(--white-28);
+}
+
+/* ========================================
+   STICKY CTA
+   ======================================== */
+.sticky-cta {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+  box-shadow: var(--shadow-fuchsia-lg);
+}
+
+.sticky-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .sticky-cta { bottom: 20px; right: 20px; }
+}
+
+/* ========================================
+   SCROLL REVEAL
+   ======================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal, .reveal-stagger { opacity: 1; transform: none; }
+  .step-waypoint, .step-content { opacity: 1; }
+  .steps-path-vertical::before { transform: scaleY(1); }
+}
+
+/* ========================================
+   RESPONSIVE — 1024px
+   ======================================== */
+@media (max-width: 1024px) {
+  .testimonial-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ========================================
+   RESPONSIVE — 768px
+   ======================================== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { padding-top: clamp(40px, 8vw, 80px); }
+
+  .why-grid { grid-template-columns: 1fr 1fr; }
+
+  .american-biz__grid { grid-template-columns: 1fr; }
+
+  .testimonial-grid { grid-template-columns: 1fr; max-width: 480px; }
+
+  .steps-path-vertical { display: none; }
+}
+
+/* ========================================
+   RESPONSIVE — 480px
+   ======================================== */
+@media (max-width: 480px) {
+  .step-item { flex-direction: column; align-items: flex-start; }
+  .step-waypoint { width: 48px; height: 48px; font-size: 0.95rem; }
+  .why-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAVIGATION
+     ============================================= -->
+<nav class="nav" id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="../V2/Logo 01 Primary/OneAM-Logo-White-Color.svg" alt="OneAM" width="120" height="30">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Industries</a></li>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta" id="navCta">
+        <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Industries</a>
+  <a href="#">Insights</a>
+  <a href="#">Resources</a>
+  <a href="#">Contact</a>
+  <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
+</div>
+
+<!-- =============================================
+     HERO — parchment background
+     ============================================= -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>The new industry standard for early pay.</h1>
+      <p style="color: var(--accent-fuchsia); font-weight: 500; margin-bottom: 1rem;">Finally, an easy way to get paid early on your invoices.</p>
+      <p>OneAM was built to fund your operations and fuel your growth. We connect SMBs and founders selling receivables with sophisticated institutional investors — a faster, more business-friendly alternative to traditional factoring.</p>
+      <div class="hero-ctas">
+        <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================
+     HOW IT WORKS — parchment background
+     ============================================= -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <h2 class="how-it-works-heading reveal">How it works</h2>
+    <p class="how-it-works-sub reveal">Four simple steps.</p>
+
+    <div class="steps-grid">
+      <div class="steps-path-vertical" aria-hidden="true"></div>
+
+      <div class="step-item">
+        <div class="step-waypoint" aria-hidden="true">01</div>
+        <div class="step-content">
+          <h3>Join in minutes</h3>
+          <p>Connect and verify your business through a 15-minute onboarding.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-waypoint" aria-hidden="true">02</div>
+        <div class="step-content">
+          <h3>Receive funding offers</h3>
+          <p>Get transparent options from trusted institutional investors.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-waypoint" aria-hidden="true">03</div>
+        <div class="step-content">
+          <h3>Choose your invoices</h3>
+          <p>Decide which to fund, and when. You're always in control.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-waypoint" aria-hidden="true">04</div>
+        <div class="step-content">
+          <h3>Get paid early</h3>
+          <p>Access cash in days while your customers pay as usual.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-it-works-cta reveal">
+      <a href="#get-started" class="btn-secondary-sm">See it in action <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHY BUSINESSES CHOOSE ONEEAM — white
+     ============================================= -->
+<section class="why-choose" id="why">
+  <div class="container">
+    <div class="why-choose-heading reveal">
+      <h2>Why businesses choose OneAM</h2>
+    </div>
+    <p class="why-choose-sub reveal">Four reasons our customers stay.</p>
+
+    <div class="why-grid">
+      <div class="why-item reveal-stagger">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8"/></svg>
+        </div>
+        <h3>Fast</h3>
+        <p>Onboard in 15 minutes. Start receiving funding offers in days, not weeks.</p>
+      </div>
+
+      <div class="why-item reveal-stagger">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+        </div>
+        <h3>Fair</h3>
+        <p>Transparent pricing. No hidden fees, ever.</p>
+      </div>
+
+      <div class="why-item reveal-stagger">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        </div>
+        <h3>Flexible</h3>
+        <p>Choose which invoices to fund, and when. No commitments.</p>
+      </div>
+
+      <div class="why-item reveal-stagger">
+        <div class="why-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Business-friendly</h3>
+        <p>Your customer relationships stay untouched. You stay in control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     BUILT FOR AMERICAN BUSINESSES — navy block
+     ============================================= -->
+<section class="american-biz">
+  <div class="container">
+    <div class="american-biz__grid">
+      <div class="reveal">
+        <h2>Built for American businesses</h2>
+        <p>If your business invoices large customers and waits to get paid, OneAM can help.</p>
+        <p>We've funded SMBs and founders across every industry and the cash flow gap is the same no matter what you sell. We close it on your terms.</p>
+        <div class="american-biz__cta">
+          <a href="#industries" class="btn-light-sm">Industries we've served <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="american-biz__img reveal">
+        <img src="Assets/oil rig american.png" alt="American oil rig — OneAM serves businesses across every industry">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TESTIMONIALS — parchment
+     ============================================= -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-heading">
+      <h2>What our customers say</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal-stagger">
+        <div class="testimonial-mark">&ldquo;</div>
+        <p class="testimonial-quote">Our customers&rsquo; payment terms make it difficult to cover payroll. This is a great, easy solution.</p>
+      </div>
+
+      <div class="testimonial-card reveal-stagger">
+        <div class="testimonial-mark">&ldquo;</div>
+        <p class="testimonial-quote">OneAM saved me from having to find new investors.</p>
+      </div>
+
+      <div class="testimonial-card reveal-stagger">
+        <div class="testimonial-mark">&ldquo;</div>
+        <p class="testimonial-quote">Onboarding with OneAM was like an F1 pit stop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     EARLY PAY — white
+     ============================================= -->
+<section class="early-pay" id="early-pay">
+  <div class="container">
+    <div class="early-pay__inner reveal">
+      <h2>New to early pay?</h2>
+      <p>If this is the first time you've heard the term, you're not alone. Most business owners haven't — and that's exactly why we built OneAM.</p>
+      <p>Early pay is a simple idea: instead of waiting 30, 60, or 90 days for your customer to pay an invoice, you get the cash now from an institutional investor. Your customer still pays on their normal schedule. You skip the wait.</p>
+      <div class="early-pay__cta">
+        <a href="resources.html" class="btn-secondary-sm">Learn more in our Resources hub <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FINAL CTA — parchment
+     ============================================= -->
+<section class="final-cta" id="get-started">
+  <div class="container">
+    <div class="cta-waypoint-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-fuchsia)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </div>
+    <h2>Ready to get paid early?</h2>
+    <p class="cta-subtext">Book a 15-minute demo and see how OneAM works for your business.</p>
+    <a href="#" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <img src="../V2/Logo 01 Primary/OneAM-Logo-White-Color.svg" alt="OneAM" class="footer-logo">
+    <p class="footer-tagline">The new industry standard for early pay. Built to fund your operations and fuel your growth.</p>
+
+    <div class="footer-links">
+      <a href="#">About</a><span class="footer-sep">&middot;</span>
+      <a href="#">Industries</a><span class="footer-sep">&middot;</span>
+      <a href="#">Insights</a><span class="footer-sep">&middot;</span>
+      <a href="#">Resources</a><span class="footer-sep">&middot;</span>
+      <a href="#">Team</a><span class="footer-sep">&middot;</span>
+      <a href="#">Contact</a><span class="footer-sep">&middot;</span>
+      <a href="#">Privacy</a><span class="footer-sep">&middot;</span>
+      <a href="#">Terms</a>
+    </div>
+
+    <div class="footer-contact">
+      <a href="mailto:info@oneam.us">info@oneam.us</a><span class="footer-sep">&middot;</span>
+      <span>New York, NY</span><span class="footer-sep">&middot;</span>
+      <a href="#">LinkedIn</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 OneAM. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#get-started" class="btn-primary sticky-cta" id="stickyCta">Book a demo <span class="arrow">&rarr;</span></a>
+
+<!-- =============================================
+     JAVASCRIPT
+     ============================================= -->
+<script>
+(function() {
+  'use strict';
+
+  const nav = document.getElementById('mainNav');
+  const stickyCta = document.getElementById('stickyCta');
+  const navCta = document.getElementById('navCta');
+  const finalCta = document.getElementById('get-started');
+
+  function handleNavScroll() {
+    const scrollY = window.scrollY;
+    nav.classList.toggle('scrolled', scrollY > 10);
+    if (stickyCta) {
+      const finalCtaTop = finalCta ? finalCta.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+      const showSticky = scrollY > 400 && finalCtaTop > window.innerHeight;
+      stickyCta.classList.toggle('visible', showSticky);
+      if (navCta) navCta.classList.toggle('hidden', showSticky);
+    }
+  }
+
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+  // ---- Hamburger menu ----
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ---- How it works: draw line, then reveal circles + content ----
+  const stepsGrid = document.querySelector('.steps-grid');
+  if (stepsGrid) {
+    const stepsObserver = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        stepsGrid.classList.add('line-visible');
+        setTimeout(function() {
+          document.querySelectorAll('.step-waypoint').forEach(function(wp) {
+            wp.classList.add('animate');
+          });
+        }, 1600);
+        stepsObserver.disconnect();
+      }
+    }, { threshold: 0.1 });
+    stepsObserver.observe(stepsGrid);
+  }
+
+  // ---- Intersection Observer for scroll reveals ----
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const parent = el.parentElement;
+          const siblings = parent ? Array.from(parent.querySelectorAll('.reveal-stagger, .reveal')) : [el];
+          const idx = siblings.indexOf(el);
+          const delay = el.classList.contains('reveal-stagger') ? idx * 150 : 0;
+
+          setTimeout(function() { el.classList.add('visible'); }, delay);
+          revealObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(function(el) { revealObserver.observe(el); });
+  } else {
+    const stepsGridReduced = document.querySelector('.steps-grid');
+    if (stepsGridReduced) stepsGridReduced.classList.add('line-visible');
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneAM V3 — Design Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fuchsia:   #C33CD2;
+      --teal:      #3CC3D2;
+      --navy:      #14143C;
+      --navy-80:   #434366;
+      --bg:        #f4f4f8;
+      --card:      #ffffff;
+      --text:      #14143C;
+      --muted:     #6b6b8a;
+      --border:    #dcdce8;
+      --shadow:    0 8px 28px rgba(20, 20, 60, 0.08);
+
+      --font-brand: 'Boing', 'Nunito', ui-rounded, system-ui, sans-serif;
+      --font-data:  'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-brand);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px 72px;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+
+    .hero {
+      margin-bottom: 16px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-data);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fuchsia);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .hero-note {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* ── Section headers ───────────────────────────────────────── */
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 44px 0 20px;
+    }
+
+    .section-header h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Cards grid ────────────────────────────────────────────── */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .cards--single {
+      grid-template-columns: minmax(0, 1fr);
+      max-width: 720px;
+    }
+
+    .cards--four {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 48px rgba(20, 20, 60, 0.12);
+    }
+
+    /* ── Preview frame ─────────────────────────────────────────── */
+
+    .preview-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .preview-frame {
+      position: relative;
+      overflow: hidden;
+      background: #e8e8f0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-frame iframe {
+      display: block;
+      width: 1440px;
+      height: 820px;
+      border: 0;
+      transform-origin: top left;
+    }
+
+    /* ── Card copy ─────────────────────────────────────────────── */
+
+    .card-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px 24px 24px;
+    }
+
+    .card-code {
+      font-family: var(--font-data);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8c8ca8;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .card-meta {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .card-main-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      margin-top: 16px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .card-main-link:hover {
+      background: var(--navy-80);
+      transform: translateY(-1px);
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+
+    @media (max-width: 900px) {
+      .cards,
+      .cards--four { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      main { padding: 20px 16px 48px; }
+      .card-copy { padding: 18px 18px 20px; }
+      .card-main-link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">OneAM — V3 Design Review</p>
+      <h1>Homepage, Title &amp; Section Variants</h1>
+      <p class="hero-note">One full homepage mockup plus focused explorations of the hero title treatment, early pay section, and "Why OneAM" section. Font shown is Nunito — the closest web-safe approximation to the OneAM brand font Boing. Click any card to view the full page.</p>
+    </section>
+
+    <div class="section-header"><h2>Full Homepage Mockup</h2></div>
+    <section class="cards cards--single" id="mockup-cards"></section>
+
+    <div class="section-header"><h2>Hero Title Concept</h2></div>
+    <section class="cards cards--single" id="title-cards"></section>
+
+    <div class="section-header"><h2>Early Pay Section Variants</h2></div>
+    <section class="cards cards--single" id="early-pay-cards"></section>
+
+    <div class="section-header"><h2>"Why OneAM" Section Variants</h2></div>
+    <section class="cards cards--four" id="why-cards"></section>
+  </main>
+
+  <script>
+    const IFRAME_W = 1440;
+    const IFRAME_H = 820;
+
+    const MOCKUPS = [
+      {
+        label: 'Full Mockup',
+        title: 'Navy — Complete Homepage',
+        file: 'Navy_mockup.html',
+        description: 'The complete V3 homepage in the navy direction — full page from nav through footer. Integrates the refined hero, product explainer, early pay section, and "Why OneAM" treatment into a single cohesive flow.',
+      },
+    ];
+
+    const TITLES = [
+      {
+        label: 'Title Concept A',
+        title: 'Curved Section Edge',
+        file: 'title_A.html',
+        description: 'Hero section with a curved bottom edge that creates a smooth visual transition into the page body. The curve softens the strong navy-to-white contrast and adds a sense of flow and momentum.',
+      },
+    ];
+
+    const EARLY_PAY = [
+      {
+        label: 'Early Pay Variants',
+        title: 'Early Pay Section — All Variants',
+        file: 'early-pay-variants.html',
+        description: 'Side-by-side explorations of the early pay section layout — comparing different approaches to presenting the accelerated payment mechanism, fee structure, and call to action.',
+      },
+    ];
+
+    const WHY = [
+      {
+        label: 'Why — Variant A',
+        title: 'Alternating Layout',
+        file: 'why-A-alternating.html',
+        description: 'Each "why" reason alternates between left- and right-aligned content with an accompanying visual — creates a zigzag reading rhythm and gives each benefit room to breathe.',
+      },
+      {
+        label: 'Why — Variant B',
+        title: 'Horizontal Rows',
+        file: 'why-B-rows.html',
+        description: 'Benefits stacked as clean horizontal rows with an icon, headline, and description in a single line. Compact, scannable, and efficient — suited to a page where this section is secondary.',
+      },
+      {
+        label: 'Why — Variant C',
+        title: 'Card Grid',
+        file: 'why-C-cards.html',
+        description: 'Each benefit presented as a standalone card in a 2×2 grid. Cards create clear visual separation and allow each reason to feel self-contained — good for audiences who skim rather than read.',
+      },
+      {
+        label: 'Why — Variant D',
+        title: 'Centered Icons',
+        file: 'why-D-circle.html',
+        description: 'Centered layout with large circular icon treatments above each benefit. The symmetry creates a formal, polished feel — works well when the four reasons are equally weighted in importance.',
+      },
+    ];
+
+    function createCard({ label, title, file, description }) {
+      return `
+        <article class="card">
+          <a class="preview-link" href="${file}">
+            <div class="preview-frame">
+              <iframe src="${file}" title="${title} preview" loading="lazy"></iframe>
+            </div>
+          </a>
+          <div class="card-copy">
+            <span class="card-code">${label}</span>
+            <span class="card-title">${title}</span>
+            <p class="card-meta">${description}</p>
+            <a class="card-main-link" href="${file}">View Mockup</a>
+          </div>
+        </article>`;
+    }
+
+    function scaleFrame(frame) {
+      const scale = frame.offsetWidth / IFRAME_W;
+      frame.querySelector('iframe').style.transform = `scale(${scale})`;
+      frame.style.height = Math.round(IFRAME_H * scale) + 'px';
+    }
+
+    document.getElementById('mockup-cards').innerHTML   = MOCKUPS.map(createCard).join('');
+    document.getElementById('title-cards').innerHTML    = TITLES.map(createCard).join('');
+    document.getElementById('early-pay-cards').innerHTML = EARLY_PAY.map(createCard).join('');
+    document.getElementById('why-cards').innerHTML      = WHY.map(createCard).join('');
+
+    const frames = document.querySelectorAll('.preview-frame');
+    frames.forEach(scaleFrame);
+
+    const ro = new ResizeObserver(entries => entries.forEach(e => scaleFrame(e.target)));
+    frames.forEach(f => ro.observe(f));
+  </script>
+</body>
+</html>

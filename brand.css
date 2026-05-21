@@ -1,0 +1,258 @@
+/* ================================================================
+   OneAM — Brand Tokens
+   Source: Brand Guidelines v2.0, December 2025
+   Link this file first in every V2 page:
+     <link rel="stylesheet" href="brand.css">
+   ================================================================ */
+
+
+/* ── Typeface ────────────────────────────────────────────────────
+   Brand font: Boing (Dalton Maag)
+   Files: V2/fonts/Boing_LightWEB.woff2 + Boing_MediumWEB.woff2
+   Light (300) → body copy  |  Medium (500) → headings
+   ──────────────────────────────────────────────────────────────── */
+
+/* Light (300) — body copy */
+@font-face {
+  font-family: 'Boing';
+  src: url('../V2/fonts/Boing_LightWEB.woff2') format('woff2'),
+       url('../V2/fonts/Boing_LightWEB.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Medium (500) — headings */
+@font-face {
+  font-family: 'Boing';
+  src: url('../V2/fonts/Boing_MediumWEB.woff2') format('woff2'),
+       url('../V2/fonts/Boing_MediumWEB.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ── Design tokens ───────────────────────────────────────────── */
+
+:root {
+
+  /* Font stack
+     --font-brand  → all body + heading text (Boing / Nunito fallback)
+     --font-data   → numbers, tables, mono UI elements (not in brand guide,
+                     but kept as a deliberate design choice for data clarity) */
+  --font-brand: 'Boing', ui-rounded, system-ui, sans-serif;
+  --font-data:  'IBM Plex Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Font weights — per brand guide:
+       Light (300)   → body copy
+       Medium (500)  → headings */
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Letter spacing
+     Standard tracking values repeated across V2/V3 mockups */
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.01em;
+  --tracking-body:     0;
+  --tracking-ui:       0.015em;
+  --tracking-eyebrow:  0.15em;
+
+
+  /* ── Primary palette ─────────────────────────────────────────
+     Full 5-step tint ramps from brand guide (100% → 20%)       */
+
+  /* Fuchsia — primary brand accent */
+  --fuchsia:      #C33CD2;
+  --fuchsia-deep: #A832B5;   /* hover / active state */
+  --fuchsia-80:   #CD64DC;
+  --fuchsia-60:   #DC8CE6;
+  --fuchsia-40:   #E6AFEB;
+  --fuchsia-20:   #F0D7F5;
+
+  /* Teal — secondary brand accent */
+  --teal:    #3CC3D2;
+  --teal-80: #64CDDC;
+  --teal-60: #8CDCE6;
+  --teal-40: #AFE6EB;
+  --teal-20: #D7F0F5;
+
+  /* Navy — primary text + dark backgrounds */
+  --navy:    #14143C;
+  --navy-80: #414164;
+  --navy-60: #73738C;
+  --navy-40: #A0A0AF;
+  --navy-20: #D2D2D7;
+
+  --white:   #FFFFFF;
+
+
+  /* ── Secondary palette ───────────────────────────────────────  */
+
+  /* Lavender */
+  --lavender:    #8C6EC8;
+  --lavender-80: #A58CD2;
+  --lavender-60: #B9AADC;
+  --lavender-40: #D2C3EB;
+  --lavender-20: #E6E1F5;
+
+  /* Cornflower */
+  --cornflower:    #738CC8;
+  --cornflower-80: #91A3D2;
+  --cornflower-60: #AAB9DC;
+  --cornflower-40: #C8D2EB;
+  --cornflower-20: #E1E6F5;
+
+  /* Dark Gray — supporting body text */
+  --gray:    #555555;
+  --gray-80: #787878;
+  --gray-60: #9B9B9B;
+  --gray-40: #B9B9B9;
+  --gray-20: #DCDCDC;
+
+
+  /* ── Alpha overlays ─────────────────────────────────────────
+     Transparent primaries for shadows, glows, tinted borders,
+     and text on dark backgrounds. Never hardcode rgba().       */
+
+  /* Fuchsia alphas */
+  --fuchsia-alpha-35: rgba(195, 60, 210, 0.35);
+  --fuchsia-alpha-30: rgba(195, 60, 210, 0.30);
+  --fuchsia-alpha-20: rgba(195, 60, 210, 0.20);
+  --fuchsia-alpha-10: rgba(195, 60, 210, 0.10);
+  --fuchsia-alpha-08: rgba(195, 60, 210, 0.08);
+
+  /* Navy alphas */
+  --navy-alpha-20: rgba(20, 20, 60, 0.20);
+  --navy-alpha-15: rgba(20, 20, 60, 0.15);
+  --navy-alpha-08: rgba(20, 20, 60, 0.08);
+  --navy-alpha-06: rgba(20, 20, 60, 0.06);
+
+  /* White alphas — for elements on dark (navy) backgrounds */
+  --white-70: rgba(255, 255, 255, 0.70);
+  --white-50: rgba(255, 255, 255, 0.50);
+  --white-45: rgba(255, 255, 255, 0.45);
+  --white-28: rgba(255, 255, 255, 0.28);
+  --white-18: rgba(255, 255, 255, 0.18);
+  --white-10: rgba(255, 255, 255, 0.10);
+  --white-08: rgba(255, 255, 255, 0.08);
+
+  --teal-alpha-35: rgba(60, 195, 210, 0.35);
+  --teal-alpha-30: rgba(60, 195, 210, 0.30);
+  --teal-alpha-20: rgba(60, 195, 210, 0.20);
+  --teal-alpha-15: rgba(60, 195, 210, 0.15);
+  --teal-alpha-08: rgba(60, 195, 210, 0.08);
+
+
+
+  /* ── Shadow tokens ───────────────────────────────────────────
+     Complete box-shadow values — use these, not raw rgba().    */
+
+  --shadow-fuchsia-sm: 0 2px 10px rgba(195, 60, 210, 0.20);
+  --shadow-fuchsia-md: 0 6px 20px rgba(195, 60, 210, 0.30);
+  --shadow-fuchsia-lg: 0 4px 20px rgba(195, 60, 210, 0.35);
+  --shadow-navy-sm:    0 2px 10px rgba(20, 20, 60, 0.15);
+  --shadow-navy-md:    0 6px 20px rgba(20, 20, 60, 0.20);
+
+
+  /* ── Brand gradient ──────────────────────────────────────────
+     Used in brand photography overlays and accent elements      */
+  --gradient-brand: linear-gradient(135deg, var(--teal) 0%, var(--lavender) 50%, var(--fuchsia) 100%);
+  --gradient-fuchsia-teal: linear-gradient(135deg, var(--fuchsia) 0%, var(--teal) 100%);
+
+
+  /* ── Semantic aliases ────────────────────────────────────────
+     Use these in component CSS so a single edit here repaints
+     the whole system.                                           */
+
+  --color-text:         var(--navy);
+  --color-text-muted:   var(--navy-60);
+  --color-text-on-dark: var(--white);
+
+  --color-accent:       var(--fuchsia);
+  --color-accent-alt:   var(--teal);
+
+  --color-bg:           var(--white);
+  --color-bg-dark:      var(--navy);
+  --color-bg-subtle:    #FAF8FA;   /* near-white warm off-white */
+
+  --color-border:       var(--navy-20);
+  --color-border-light: #EDECEA;
+
+  /* ── Button shape ────────────────────────────────────────────── */
+  --radius-btn: 100px;
+
+}
+
+
+/* ── Base reset ──────────────────────────────────────────────────
+   Shared across all V2 pages.                                    */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-brand);
+  font-weight: var(--fw-light);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+/* ── Typography ──────────────────────────────────────────────────
+   Brand guide: Medium (500) for headings, Light (300) for body   */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+  font-weight: var(--fw-medium);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+}
+
+h1 {
+  letter-spacing: var(--tracking-display);
+}
+
+p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  letter-spacing: var(--tracking-body);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--navy);
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneAM — Why Choose Us (D: Centered Icons)</title>
+<link rel="stylesheet" href="brand.css">
+
+<style>
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.why-section {
+  padding: clamp(80px, 12vw, 140px) 0;
+  background: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(56px, 8vw, 96px);
+}
+
+.section-header h2 {
+  color: var(--navy);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--fuchsia);
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  font-weight: var(--fw-medium);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+/* Soft radial glow — no hard circle border, matching inspiration */
+.card-icon-wrap {
+  width: 148px;
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon-wrap svg,
+.card-icon-wrap img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.card-icon-wrap svg {
+  overflow: visible;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.card h3 {
+  color: var(--navy);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+}
+
+.card p {
+  color: var(--navy);
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  line-height: 1.75;
+  max-width: 220px;
+}
+
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 540px) {
+  .cards-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<section class="why-section">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Why businesses choose OneAM</h2>
+      <p>Four reasons our customers stay.</p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- Fast — lightning bolt with depth layers -->
+      <div class="card">
+        <div class="card-icon-wrap" aria-hidden="true">
+          <img src="fast.png" alt="">
+        </div>
+        <div class="card-body">
+          <h3>Fast</h3>
+          <p>Onboard in 15 minutes. Start receiving funding offers in days, not weeks.</p>
+        </div>
+      </div>
+
+      <!-- Fair — balance scale with depth layers -->
+      <div class="card">
+        <div class="card-icon-wrap" aria-hidden="true">
+          <img src="fair.png" alt="">
+        </div>
+        <div class="card-body">
+          <h3>Fair</h3>
+          <p>Transparent pricing. No hidden fees, ever.</p>
+        </div>
+      </div>
+
+      <!-- Flexible — sliders with depth layers -->
+      <div class="card">
+        <div class="card-icon-wrap" aria-hidden="true">
+          <img src="flexible.png" alt="">
+        </div>
+        <div class="card-body">
+          <h3>Flexible</h3>
+          <p>Choose which invoices to fund, and when. No commitments.</p>
+        </div>
+      </div>
+
+      <!-- Business-friendly — two people with depth layers -->
+      <div class="card">
+        <div class="card-icon-wrap" aria-hidden="true">
+          <img src="friendly.png" alt="">
+        </div>
+        <div class="card-body">
+          <h3>Business-friendly</h3>
+          <p>Your customer relationships stay untouched. You stay in control.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option A — Curved Section Edge</title>
+<link rel="stylesheet" href="brand.css">
+<style>
+:root {
+  --max-width: 1140px;
+}
+
+body {
+  font-size: clamp(15px, 1.1vw, 17px);
+  background: var(--white);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); letter-spacing: -0.01em; }
+
+.section-label {
+  display: block;
+  font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fuchsia);
+  margin-bottom: 1.5rem;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 10vw, 120px);
+  text-align: center;
+  background: var(--color-bg-subtle);
+  border-bottom-left-radius: 50% 80px;
+  border-bottom-right-radius: 50% 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 { margin-bottom: 1.25rem; }
+
+.hero p {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  line-height: 1.8;
+  color: var(--navy-60);
+}
+
+/* ── HOW IT WORKS ── */
+.how-it-works {
+  padding: clamp(60px, 8vw, 100px) 0 clamp(60px, 8vw, 80px);
+  background: var(--white);
+  text-align: center;
+}
+
+.how-it-works h2 {
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works-sub {
+  font-size: clamp(1.08rem, 1.45vw, 1.24rem);
+  font-weight: 500;
+  color: var(--fuchsia);
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <span class="section-label">Early Pay Platform</span>
+    <h1>The new industry standard<br>for early pay.</h1>
+    <p>OneAM connects SMBs with institutional investors — a faster, more business-friendly alternative to traditional factoring.</p>
+  </div>
+</section>
+
+<section class="how-it-works">
+  <div class="container">
+    <h2>How it works</h2>
+    <p class="how-it-works-sub">Four simple steps.</p>
+  </div>
+</section>
+
+</body>
+</html>
