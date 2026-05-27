@@ -231,6 +231,9 @@
     <div class="section-header"><h2>Hero Title Variants</h2></div>
     <section class="cards cards--single" id="title-cards"></section>
 
+    <div class="section-header"><h2>Final CTA Variants</h2></div>
+    <section class="cards cards--single" id="cta-cards"></section>
+
     <div class="section-header"><h2>Resources &amp; Insights Pages</h2></div>
     <section class="cards" id="content-cards"></section>
   </main>
@@ -260,6 +263,15 @@
         title: 'Hero Title Variants',
         file: 'title-variants.html',
         description: 'A focused exploration of headline treatments for the homepage hero, comparing spacing, line breaks, and navigation context while staying inside the current design language.',
+      },
+    ];
+
+    const CTA = [
+      {
+        label: 'Linked Page',
+        title: 'Final CTA Variants',
+        file: 'cta-variant.html',
+        description: 'Three treatments for the closing CTA section: a split image layout (A), a centered symbol layout (B), and a centered symbol layout with a two-column footer (C).',
       },
     ];
 
@@ -303,6 +315,7 @@
 
     document.getElementById('mockup-cards').innerHTML    = MOCKUPS.map(createCard).join('');
     document.getElementById('title-cards').innerHTML     = TITLES.map(createCard).join('');
+    document.getElementById('cta-cards').innerHTML       = CTA.map(createCard).join('');
     document.getElementById('content-cards').innerHTML   = CONTENT.map(createCard).join('');
 
     const frames = document.querySelectorAll('.preview-frame');
