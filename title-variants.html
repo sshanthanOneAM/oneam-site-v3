@@ -281,9 +281,12 @@ p {
   padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 10vw, 120px);
   text-align: center;
   position: relative;
-  background:
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-    url('image_assets/truck.png') center 70% / cover no-repeat;
+    var(--hero-bg-image);
+  background-position: center, var(--hero-bg-position);
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto, cover;
   z-index: 1;
 }
 
@@ -308,11 +311,11 @@ p {
   text-align: center;
 }
 
-.hero h1, .hero-v6 h1 { margin-bottom: 1.25rem; }
+.hero h1, .hero-v6 h1, .hero-v7 h1 { margin-bottom: 1.25rem; }
 /* 
 .hero-v6 h1 { color: var(--white); } */
 
-.hero p, .hero-v6 p {
+.hero p, .hero-v6 p, .hero-v7 p {
   max-width: 600px;
   margin: 0 auto 2.5rem;
   line-height: 1.8;
@@ -347,8 +350,10 @@ p {
   padding: clamp(40px, 7vw, 80px) 0 clamp(60px, 9vw, 100px);
   text-align: center;
   position: relative;
-  background:
-    url('image_assets/truck.png') center 65% / cover no-repeat;
+  background-image: var(--hero-bg-image);
+  background-position: var(--hero-bg-position);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero-v2__content {
@@ -565,10 +570,27 @@ p {
   padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 10vw, 120px);
   text-align: center;
   position: relative;
-  background:
+  background-image:
     linear-gradient(var(--fuchsia-alpha-30) 0%, var(--teal-alpha-30) 100%),
     linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
-    url('image_assets/truck.png') center 80% / cover no-repeat;
+    var(--hero-bg-image);
+  background-position: center, center, var(--hero-bg-position);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: auto, auto, cover;
+  z-index: 1;
+}
+
+.hero-v7 {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(80px, 10vw, 120px);
+  text-align: center;
+  position: relative;
+  background-image:
+    linear-gradient(135deg, var(--teal-alpha-70) 0%, var(--fuchsia-alpha-50) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.82)),
+    var(--hero-bg-image);
+  background-position: center, center, var(--hero-bg-position);
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-size: auto, auto, cover;
   z-index: 1;
 }
 
@@ -594,11 +616,11 @@ p {
 </head>
 <body>
 
-<nav class="nav" id="mainNav">
+<nav class="nav nav--dark" id="mainNav">
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="Logo 01 Primary/OneAM-Logo-Navy-Color.svg" alt="OneAM" width="120" height="30">
+        <img src="Logo 01 Primary/OneAM-Logo-White-Color.svg" alt="OneAM" width="120" height="30">
       </a>
 
       <ul class="nav-links">
@@ -632,7 +654,7 @@ p {
   <a href="#" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
 </div>
 
-<section class="hero">
+<section class="hero" data-hero-bg="hero-v1">
   <div class="container">
     <div class="hero-content">
       <h1>The new industry standard for <span style="color: var(--fuchsia);">early pay.</span></h1>
@@ -658,7 +680,7 @@ p {
 
 <div class="nav-placeholder"></div>
 
-<section class="hero-v2">
+<section class="hero-v2" data-hero-bg="hero-v2">
   <div class="container">
     <div class="hero-v2__content">
       <h1>The new industry standard for <span style="color: var(--fuchsia);">early pay.</span></h1>
@@ -699,7 +721,7 @@ p {
     </div>
   </div>
   <div class="hero-v3__image">
-    <img src="image_assets/truck.jpg" alt="Freight truck on the road">
+    <img alt="Freight truck on the road" data-hero-img="hero-v3">
   </div>
 </section>
 
@@ -729,7 +751,7 @@ p {
     </div>
   </div>
   <div class="hero-v4__image">
-    <img src="image_assets/truck.jpg" alt="Freight truck on the road">
+    <img alt="Freight truck on the road" data-hero-img="hero-v4">
   </div>
 </section>
 
@@ -751,7 +773,7 @@ p {
     </div>
   </div>
   <div class="hero-v5__image">
-    <img src="image_assets/port.jpg" alt="Aerial planes">
+    <img alt="Aerial planes" data-hero-img="hero-v5">
     <img src="Logo 01 Primary/OneAM-Symbol-White.png" alt="" class="hero-v5__watermark" aria-hidden="true">
   </div>
 </section>
@@ -764,7 +786,7 @@ p {
 
 <div class="nav-placeholder"></div>
 
-<section class="hero-v6">
+<section class="hero-v6" data-hero-bg="hero-v6">
   <div class="container">
     <div class="hero-content">
       <h1>The new industry standard for early pay.</h1>
@@ -779,14 +801,95 @@ p {
 
 <div class="below-hero"></div>
 
+<div class="variant-divider">
+  <span>Variant 7 — Full bleed with brand gradient overlay</span>
+</div>
+
+<div class="nav-placeholder"></div>
+
+<section class="hero-v7" data-hero-bg="hero-v7">
+  <div class="container">
+    <div class="hero-content">
+      <h1>The new industry standard for early pay.</h1>
+      <p style="color: var(--white); font-weight: 500; margin-bottom: 1rem;">Finally, an easy way to get paid early on your invoices.</p>
+      <p>OneAM was built to fund your operations and fuel your growth. We connect SMBs and founders selling receivables with sophisticated institutional investors — a faster, more business-friendly alternative to traditional factoring.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="below-hero"></div>
+
 <div class="nav-toggle-ctrl">
-  <button class="nav-toggle-btn" id="navColorToggle">
+  <button class="nav-toggle-btn is-dark" id="navColorToggle">
     <span class="nav-toggle-swatch" id="navToggleSwatch"></span>
-    <span id="navToggleLabel">Navy nav</span>
+    <span id="navToggleLabel">White nav</span>
   </button>
 </div>
 
 <script>
+// Edit hero images here so every variant is controlled from one place.
+const HERO_MEDIA = {
+  'hero-v1': {
+    src: 'image_assets/truck.png',
+    position: 'center 70%'
+  },
+  'hero-v2': {
+    src: 'image_assets/truck.png',
+    position: 'center 65%'
+  },
+  'hero-v3': {
+    src: 'image_assets/truck.jpg',
+    alt: 'Freight truck on the road',
+    position: 'right center'
+  },
+  'hero-v4': {
+    src: 'image_assets/truck.jpg',
+    alt: 'Freight truck on the road',
+    position: '60% center'
+  },
+  'hero-v5': {
+    src: 'image_assets/port.jpg',
+    alt: 'Aerial planes',
+    position: '60% center'
+  },
+  'hero-v6': {
+    src: 'image_assets/truck.png',
+    position: 'center 80%'
+  },
+  'hero-v7': {
+    src: 'image_assets/port.jpg',
+    position: 'center center'
+  }
+};
+
+(function() {
+  document.querySelectorAll('[data-hero-bg]').forEach(function(el) {
+    var key = el.dataset.heroBg;
+    var media = HERO_MEDIA[key];
+    if (!media || !media.src) return;
+    el.style.setProperty('--hero-bg-image', 'url("' + media.src + '")');
+    if (media.position) {
+      el.style.setProperty('--hero-bg-position', media.position);
+    }
+  });
+
+  document.querySelectorAll('[data-hero-img]').forEach(function(img) {
+    var key = img.dataset.heroImg;
+    var media = HERO_MEDIA[key];
+    if (!media || !media.src) return;
+    img.src = media.src;
+    if (media.alt) {
+      img.alt = media.alt;
+    }
+    if (media.position) {
+      img.style.objectPosition = media.position;
+    }
+  });
+})();
+
 (function() {
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', function() {
@@ -814,11 +917,12 @@ p {
 // Stamp nav-preview HTML at every placeholder — single source of truth
 (function() {
   var LOGO_LIGHT = 'Logo 01 Primary/OneAM-Logo-Navy-Color.svg';
+  var LOGO_DARK  = 'Logo 01 Primary/OneAM-Logo-White-Color.svg';
   var navMarkup = [
-    '<nav class="nav nav-preview">',
+    '<nav class="nav nav-preview nav--dark">',
     '  <div class="container"><div class="nav-inner">',
     '    <a href="#" class="nav-logo">',
-    '      <img src="' + LOGO_LIGHT + '" alt="OneAM" width="120" height="30">',
+    '      <img src="' + LOGO_DARK + '" alt="OneAM" width="120" height="30">',
     '    </a>',
     '    <ul class="nav-links">',
     '      <li><a href="#">Home</a></li>',
@@ -846,7 +950,7 @@ p {
 })();
 
 (function() {
-  var isDark = false;
+  var isDark = true;
   var LOGO_LIGHT = 'Logo 01 Primary/OneAM-Logo-Navy-Color.svg';
   var LOGO_DARK  = 'Logo 01 Primary/OneAM-Logo-White-Color.svg';
 

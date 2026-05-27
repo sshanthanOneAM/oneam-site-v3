@@ -189,19 +189,6 @@ p {
   transform: translateY(-1px);
 }
 
-.btn-secondary-sm:hover .arrow,
-.btn-light-sm:hover .arrow { transform: translateX(4px); }
-
-.arrow {
-  display: inline-block;
-  color: inherit;
-  font-weight: 600;
-  transition: transform var(--transition-base);
-}
-
-.btn-primary:hover .arrow { transform: translateX(4px); }
-.btn-secondary:hover .arrow { transform: translateX(4px); }
-
 .hero-ctas {
   display: flex;
   gap: 12px;
@@ -217,7 +204,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--white);
+  background: var(--navy);
   transition: border-color var(--transition-base);
   border-bottom: 1px solid transparent;
 }
@@ -256,7 +243,7 @@ p {
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--white);
   transition: color var(--transition-base);
 }
 
@@ -349,6 +336,7 @@ p {
   justify-content: center;
   padding: clamp(60px, 8vw, 100px) clamp(32px, 5vw, 72px);
   padding-left: clamp(80px, 8vw, 140px);
+  padding-bottom: clamp(100px, 13vw, 160px);
   text-align: left;
 }
 
@@ -498,10 +486,10 @@ p {
 .steps-grid.line-visible .step-item:nth-child(4) .step-waypoint { opacity: 1; transition-delay: 0.80s; }
 .steps-grid.line-visible .step-item:nth-child(5) .step-waypoint { opacity: 1; transition-delay: 1.15s; }
 
-.steps-grid.line-visible .step-item:nth-child(2) .step-content { opacity: 1; transition-delay: 0.25s; }
-.steps-grid.line-visible .step-item:nth-child(3) .step-content { opacity: 1; transition-delay: 0.60s; }
-.steps-grid.line-visible .step-item:nth-child(4) .step-content { opacity: 1; transition-delay: 0.95s; }
-.steps-grid.line-visible .step-item:nth-child(5) .step-content { opacity: 1; transition-delay: 1.30s; }
+.steps-grid.line-visible .step-item:nth-child(2) .step-content { opacity: 1; transition-delay: 0.10s; }
+.steps-grid.line-visible .step-item:nth-child(3) .step-content { opacity: 1; transition-delay: 0.45s; }
+.steps-grid.line-visible .step-item:nth-child(4) .step-content { opacity: 1; transition-delay: 0.80s; }
+.steps-grid.line-visible .step-item:nth-child(5) .step-content { opacity: 1; transition-delay: 1.15s; }
 
 .step-content h3 {
   margin-bottom: 0.6rem;
@@ -676,24 +664,32 @@ p {
   margin-right: auto;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(20px, 2.5vw, 28px);
-  max-width: 1040px;
-  margin: 0 auto;
+.carousel-viewport {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .testimonial-card {
+  flex-shrink: 0;
   background: var(--bg-card);
-  /* border: 1px solid var(--border-warm); */
   border-radius: var(--radius);
   padding: clamp(28px, 3.5vw, 36px);
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  box-shadow: var(--shadow-soft);
+  transition: opacity 0.4s ease;
+  opacity: 0.3;
 }
 
+.testimonial-card.is-active {
+  opacity: 1;
+}
 
 .testimonial-mark {
   font-family: var(--font-heading);
@@ -728,6 +724,40 @@ p {
   line-height: 1.4;
   margin-top: 0.2rem;
 }
+
+/* ---- Carousel bottom nav — matches .faq-plus style ----
+   To change: swap the arrow characters or swap this block
+   for .carousel-dots + .carousel-dot if you want dots back */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: clamp(28px, 3.5vw, 36px);
+}
+
+.carousel-arrow--prev,
+.carousel-arrow--next {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent-fuchsia);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0;
+  transition: color var(--transition-base);
+}
+
+.carousel-arrow--prev:hover,
+.carousel-arrow--next:hover { color: var(--fuchsia-deep); }
+
+.carousel-arrow--next:hover .arrow { transform: translateX(4px); }
+.carousel-arrow--prev:hover .arrow { transform: translateX(-4px); }
 
 /* ========================================
    EARLY PAY — white
@@ -902,43 +932,34 @@ p {
 }
 
 /* ========================================
-   FINAL CTA — parchment
+   FINAL CTA — centered
    ======================================== */
 .final-cta {
+  padding: clamp(60px, 9vw, 100px) 0;
+  text-align: center;
   background: var(--white);
-  display: flex;
-  align-items: stretch;
-  overflow: hidden;
 }
 
-.final-cta__content {
-  flex: 0 0 55%;
+.cta-waypoint-icon {
+  width: 72px;
+  height: 72px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  padding: clamp(84px, 11vw, 136px) clamp(32px, 5vw, 72px);
-  padding-left: clamp(80px, 8vw, 140px);
+  margin: 0 auto 1.25rem;
 }
 
-.final-cta__image {
-  flex: 1;
-  position: relative;
-  clip-path: url(#hero-v3-clip);
-}
-
-.final-cta__image img {
-  position: absolute;
-  inset: 0;
+.cta-waypoint-icon img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  object-fit: contain;
 }
 
 .final-cta h2 {
   margin-bottom: 1.5rem;
-  max-width: 520px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .final-cta .btn-primary { margin-top: 0.25rem; }
@@ -947,15 +968,17 @@ p {
   font-size: clamp(1.08rem, 1.45vw, 1.24rem);
   line-height: 1.8;
   color: var(--text-primary);
-  max-width: 520px;
-  margin: 0 0 2rem;
+  max-width: 480px;
+  margin: 0 auto 2rem;
 }
 
 /* ========================================
    FOOTER
    ======================================== */
 .footer {
-  background: var(--navy);
+  background:
+    linear-gradient(rgba(14, 31, 56, 0.90), rgba(14, 31, 56, 0.90)),
+    url('image_assets/aerial_planes.jpg') center center / cover no-repeat;
   padding: clamp(40px, 6vw, 56px) 0 clamp(20px, 3vw, 28px);
   text-align: center;
 }
@@ -1091,12 +1114,6 @@ p {
   .steps-path-vertical::before { transform: scaleY(1); }
 }
 
-/* ========================================
-   RESPONSIVE — 1024px
-   ======================================== */
-@media (max-width: 1024px) {
-  .testimonial-grid { grid-template-columns: 1fr 1fr; }
-}
 
 /* ========================================
    RESPONSIVE — 768px
@@ -1150,22 +1167,7 @@ p {
     justify-content: flex-start;
   }
 
-  .final-cta {
-    flex-direction: column;
-  }
-
-  .final-cta__content {
-    flex: none;
-    padding-left: clamp(32px, 5vw, 72px);
-  }
-
-  .final-cta__image {
-    flex: none;
-    height: 280px;
-    clip-path: none;
-  }
-
-  .testimonial-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .carousel-btn { display: none; }
 
   .steps-path-vertical { display: none; }
 }
@@ -1194,7 +1196,7 @@ p {
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="Logo 01 Primary/OneAM-Logo-Navy-Color.svg" alt="OneAM" width="120" height="30">
+        <img src="Logo 01 Primary/OneAM-Logo-White-Color.svg" alt="OneAM" width="120" height="30">
       </a>
 
       <ul class="nav-links">
@@ -1208,7 +1210,7 @@ p {
       </ul>
 
       <div class="nav-cta" id="navCta">
-        <a href="#get-started" class="btn-primary">Book a demo<span class="arrow">&rarr;</span></a>
+        <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -1227,7 +1229,7 @@ p {
   <a href="#">Insights</a>
   <a href="#">Resources</a>
   <a href="#">Contact</a>
-  <a href="#get-started" class="btn-primary">Book a demo<span class="arrow">&rarr;</span></a>
+  <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
 </div>
 
 <!-- =============================================
@@ -1239,7 +1241,7 @@ p {
     <p class="hero-lead">Finally, an easy way to get paid early on your invoices.</p>
     <p>OneAM was built to fund your operations and fuel your growth. We connect SMBs and founders selling receivables with sophisticated institutional investors — a faster, more business-friendly alternative to traditional factoring.</p>
     <div class="hero-ctas">
-      <a href="#get-started" class="btn-primary">Book a demo<span class="arrow">&rarr;</span></a>
+      <a href="#get-started" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
     </div>
   </div>
   <div class="hero-image" aria-hidden="true">
@@ -1249,9 +1251,6 @@ p {
 
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;overflow:visible">
   <defs>
-    <clipPath id="hero-v3-clip" clipPathUnits="objectBoundingBox">
-      <path d="M 0.182,0 L 1,0 L 1,1 L 0.182,1 Q -0.08,0.5 0.182,0 Z"/>
-    </clipPath>
     <clipPath id="hero-v4-clip" clipPathUnits="objectBoundingBox">
       <path d="M 0,0 L 1,0 L 1,1 L 0,1 Q 0.3,0.5 0,0 Z"/>
     </clipPath>
@@ -1398,37 +1397,113 @@ p {
      ============================================= -->
 <section class="testimonials" id="testimonials">
   <div class="container">
-    <div class="testimonials-heading">
+    <div class="testimonials-heading reveal">
       <h2>What our customers say</h2>
     </div>
 
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal-stagger">
-        <div class="testimonial-mark">&ldquo;</div>
-        <p class="testimonial-quote">Our customers&rsquo; payment terms make it difficult to cover payroll. This is a great, easy solution.</p>
-        <div class="testimonial-attribution">
-          <div class="testimonial-name">Owner</div>
-          <div class="testimonial-role">Strategy Consulting</div>
+    <div class="carousel-outer">
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">You&rsquo;ve made it about as easy as it can be.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CEO</div>
+              <div class="testimonial-role">Oil Field Services</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">The best part is I don&rsquo;t have to contact my customers.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CFO</div>
+              <div class="testimonial-role">Security Manufacturing</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">OneAM saved me from having to find new investors.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CEO</div>
+              <div class="testimonial-role">Enterprise SaaS</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">I&rsquo;d like to use OneAM strategically with our blue&#8209;chip clients.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">Owner</div>
+              <div class="testimonial-role">Strategy Consulting</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">Onboarding feels as fast as an F1 pit stop.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CEO</div>
+              <div class="testimonial-role">Cybersecurity</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">Very elegant.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">COO</div>
+              <div class="testimonial-role">Architectural Firm</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">OneAM truly changes the game for us.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CEO</div>
+              <div class="testimonial-role">Apparel Brand</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">We talk to everyone in the market. OneAM is very differentiated.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CFO</div>
+              <div class="testimonial-role">Technology Staffing</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">An incredible platform.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">CEO</div>
+              <div class="testimonial-role">Enterprise SaaS</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-mark">&ldquo;</div>
+            <p class="testimonial-quote">Our customers&rsquo; payment terms make it difficult to cover payroll. This is a great, easy solution.</p>
+            <div class="testimonial-attribution">
+              <div class="testimonial-name">Owner</div>
+              <div class="testimonial-role">Strategy Consulting</div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="testimonial-card reveal-stagger">
-        <div class="testimonial-mark">&ldquo;</div>
-        <p class="testimonial-quote">OneAM saved me from having to find new investors.</p>
-        <div class="testimonial-attribution">
-          <div class="testimonial-name">CEO</div>
-          <div class="testimonial-role">Enterprise SaaS</div>
-        </div>
-      </div>
+    </div>
 
-      <div class="testimonial-card reveal-stagger">
-        <div class="testimonial-mark">&ldquo;</div>
-        <p class="testimonial-quote">Onboarding feels as fast as an F1 pit stop.</p>
-        <div class="testimonial-attribution">
-          <div class="testimonial-name">CEO</div>
-          <div class="testimonial-role">Cybersecurity</div>
-        </div>
-      </div>
+    <!-- Carousel nav: arrows below cards. To change style, edit .carousel-controls in CSS -->
+    <div class="carousel-controls">
+      <button class="carousel-arrow--prev" aria-label="Previous testimonials">&#8592;</button>
+      <button class="carousel-arrow--next" aria-label="Next testimonials">&#8594;</button>
     </div>
   </div>
 </section>
@@ -1485,7 +1560,7 @@ p {
         </div>
       </div>
 
-      <a href="resources.html" class="btn-secondary-sm">More Resources<span class="arrow">&rarr;</span></a>
+      <a href="resources.html" class="btn-secondary-sm">More Resources <span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -1536,13 +1611,13 @@ p {
      FINAL CTA — parchment
      ============================================= -->
 <section class="final-cta" id="get-started">
-  <div class="final-cta__content">
+  <div class="container">
+    <div class="cta-waypoint-icon" aria-hidden="true">
+      <img src="Logo 01 Primary/OneAM-Symbol-Color.svg" alt="">
+    </div>
     <h2>Ready to get paid early?</h2>
     <p class="cta-subtext">Book a 15-minute demo and see how OneAM works for your business.</p>
-    <a href="#" class="btn-primary">Book a demo<span class="arrow">&rarr;</span></a>
-  </div>
-  <div class="final-cta__image" aria-hidden="true">
-    <img src="image_assets/parcels.jpg" alt="">
+    <a href="#" class="btn-primary">Book a demo <span class="arrow">&rarr;</span></a>
   </div>
 </section>
 
@@ -1577,7 +1652,7 @@ p {
   </div>
 </footer>
 
-<a href="#get-started" class="btn-primary sticky-cta" id="stickyCta">Book a demo<span class="arrow">&rarr;</span></a>
+<a href="#get-started" class="btn-primary sticky-cta" id="stickyCta">Book a demo <span class="arrow">&rarr;</span></a>
 
 <!-- =============================================
      JAVASCRIPT
@@ -1673,6 +1748,123 @@ p {
   }
 
 })();
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Carousel config ─────────────────────────────────────────────
+     To adjust timing: change AUTO_MS (milliseconds per slide).
+       5000  = 5 seconds  (current)
+       3000  = 3 seconds  (faster)
+       8000  = 8 seconds  (slower)
+     To adjust slide speed: change the "0.55s" in the transition
+     string inside the render() function below.                     */
+  var CARD_GAP = 24;   /* px — must match gap in .carousel-track */
+  var AUTO_MS  = 3000; /* ← CHANGE THIS to adjust auto-advance timing */
+
+  var viewport   = document.querySelector('.carousel-viewport');
+  var track      = document.querySelector('.carousel-track');
+  var realCards  = Array.from(document.querySelectorAll('.testimonial-card'));
+  /* To swap nav controls: update these two selectors */
+  var btnPrev    = document.querySelector('.carousel-arrow--prev');
+  var btnNext    = document.querySelector('.carousel-arrow--next');
+
+  if (!viewport || !track || !realCards.length) return;
+
+  var REAL_COUNT   = realCards.length; /* 10 */
+  var CLONE_BEFORE = 3; /* clones of last 3 real cards prepended */
+  var visible      = 3;
+  var currIdx      = CLONE_BEFORE; /* start at first real card */
+  var cardW        = 0;
+  var autoTimer;
+
+  /* Build infinite buffer: clone last-3 before, first-3 after */
+  realCards.slice(-CLONE_BEFORE).forEach(function (c) {
+    track.insertBefore(c.cloneNode(true), track.firstChild);
+  });
+  realCards.slice(0, CLONE_BEFORE).forEach(function (c) {
+    track.appendChild(c.cloneNode(true));
+  });
+
+  var allCards = Array.from(track.querySelectorAll('.testimonial-card'));
+  /* allCards layout: [clone7,clone8,clone9, real0…real9, clone0,clone1,clone2]
+                       idx 0   1       2     3        12   13     14     15    */
+
+  function calcVisible() {
+    var vw = window.innerWidth;
+    if (vw < 600) return 1;
+    if (vw < 900) return 2;
+    return 3;
+  }
+
+  function layout() {
+    visible = calcVisible();
+    var vpW = viewport.clientWidth;
+    cardW = (vpW - (visible - 1) * CARD_GAP) / visible;
+    allCards.forEach(function (c) { c.style.width = cardW + 'px'; });
+    render(false);
+  }
+
+  function render(animate) {
+    track.style.transition = animate
+      ? 'transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      : 'none';
+    track.style.transform = 'translateX(' + -(currIdx * (cardW + CARD_GAP)) + 'px)';
+    allCards.forEach(function (c, i) {
+      c.classList.toggle('is-active', i >= currIdx && i < currIdx + visible);
+    });
+    if (!animate) { void track.offsetWidth; }
+  }
+
+  /* After the slide animation, silently snap from clone zone back to
+     the real-card equivalent — the user never sees the jump          */
+  track.addEventListener('transitionend', function (e) {
+    if (e.target !== track) return;
+    if (currIdx < CLONE_BEFORE) {
+      currIdx += REAL_COUNT;
+      render(false);
+    } else if (currIdx >= CLONE_BEFORE + REAL_COUNT) {
+      currIdx -= REAL_COUNT;
+      render(false);
+    }
+  });
+
+  function next() { currIdx++; render(true); resetAuto(); }
+  function prev() { currIdx--; render(true); resetAuto(); }
+
+  function startAuto() { autoTimer = setInterval(next, AUTO_MS); }
+  function stopAuto()  { clearInterval(autoTimer); }
+  function resetAuto() { stopAuto(); startAuto(); }
+
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+
+  var swipeX = 0;
+  viewport.addEventListener('touchstart', function (e) {
+    swipeX = e.touches[0].clientX;
+    stopAuto();
+  }, { passive: true });
+  viewport.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - swipeX;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+    else { startAuto(); }
+  }, { passive: true });
+
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layout, 150);
+  });
+
+  layout();
+  startAuto();
+
+}());
 </script>
 
 </body>
