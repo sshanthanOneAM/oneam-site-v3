@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneAM — Resources / FAQ Variants</title>
+<meta name="description" content="Resources-page variants for OneAM, centered on early-pay education and FAQ layouts that guide visitors into the broader resources hub.">
+<link rel="stylesheet" href="brand.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --text-primary:   var(--navy);
+  --accent-fuchsia: var(--fuchsia);
+  --font-heading:   var(--font-brand);
+  --font-body:      var(--font-brand);
+  --font-ui:        'Josefin Sans', sans-serif;
+  --max-width:      1140px;
+  --radius:         12px;
+  --transition-base: 0.3s ease;
+
+  --fs-h2:   clamp(1.8rem, 3.5vw, 2.6rem);
+  --fs-body: clamp(1.05rem, 1.35vw, 1.18rem);
+}
+
+body {
+  font-size: clamp(15px, 1.1vw, 17px);
+  font-weight: var(--fw-light);
+  background: #e8e8e8;
+  color: var(--text-primary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+p {
+  font-size: var(--fs-body);
+  color: var(--text-primary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.btn-secondary-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-navy-sm);
+  text-decoration: none;
+}
+
+.btn-secondary-sm:hover {
+  background: var(--navy-80);
+  color: var(--color-text-on-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-navy-md);
+}
+
+.arrow {
+  display: inline-block;
+  color: inherit;
+  font-weight: 600;
+  transition: transform var(--transition-base);
+}
+
+.btn-secondary-sm:hover .arrow { transform: translateX(4px); }
+
+/* Variant label */
+.variant-label {
+  color: var(--navy);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-family: var(--font-heading);
+}
+
+/* ============================================================
+   VERSION 1 — Left-justified text + asymmetric blog grid
+   ============================================================ */
+.ep-v1 {
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--color-bg-subtle);
+}
+
+.ep-v1__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 72px);
+  align-items: center;
+}
+
+.ep-v1__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.ep-v1__faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--color-border-light);
+}
+
+.faq-item summary {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-body);
+  cursor: pointer;
+  padding: clamp(18px, 2vw, 24px) 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--navy);
+  transition: color var(--transition-base);
+  line-height: 1.35;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { display: none; content: ''; }
+
+.faq-item summary:hover { color: var(--accent-fuchsia); }
+
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-base);
+}
+
+.faq-chevron svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.faq-item[open] .faq-answer-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer {
+  overflow: hidden;
+}
+
+.faq-answer p {
+  font-size: 0.95em;
+  padding-bottom: clamp(16px, 2vw, 22px);
+  line-height: 1.8;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+/* ============================================================
+   VERSION 2 — Same split layout, FAQ items as white cards
+   ============================================================ */
+.ep-v2 {
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--color-bg-subtle);
+}
+
+.ep-v2 .faq-item,
+.ep-v2 .faq-item:first-child {
+  background: var(--white);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: border-color var(--transition-base); 
+  box-shadow:
+  -2px -2px 0 var(--color-bg-subtle),
+    3px  3px 0 var(--teal-alpha-15);
+}
+
+.ep-v2 .faq-item[open] {
+  box-shadow:
+  -2px -2px 0 var(--color-bg-subtle),
+    3px  3px 0 var(--teal-alpha-15);
+}
+
+.ep-v2 .faq-item summary {
+   padding: 14px clamp(16px, 1.5vw, 20px);
+}
+
+.ep-v2 .faq-answer p {
+  padding-left: clamp(16px, 1.5vw, 20px);
+  padding-right: clamp(16px, 1.5vw, 20px);
+}
+
+/* ============================================================
+   VERSION 3 — Centered header, borderless FAQ + fuchsia plus
+   ============================================================ */
+.ep-v3 {
+  padding: clamp(48px, 7vw, 80px) 0;
+  background: var(--color-bg-subtle);
+}
+
+.ep-v3__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ep-v3__header {
+  max-width: 780px;
+  margin-bottom: clamp(32px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.ep-v3__faqs {
+  width: 100%;
+  max-width: 620px;
+  margin-bottom: clamp(28px, 3.5vw, 40px);
+}
+
+.ep-v3 .faq-item,
+.ep-v3 .faq-item:first-child {
+  border: none;
+}
+
+.ep-v3 .faq-item summary {
+  text-align: left;
+}
+
+.faq-plus {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--fuchsia);
+  transition: transform var(--transition-base);
+}
+
+.ep-v3 .faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==========================================
+     VERSION 1
+     ========================================== -->
+<div class="variant-label">Version 1 )</div>
+
+<section class="ep-v1">
+  <div class="container">
+    <div class="ep-v1__layout">
+
+      <div class="ep-v1__text">
+        <h2>New to early pay?</h2>
+        <p>If this is the first time you've heard the term, you're not alone. Most business owners haven't — and that's exactly why we built OneAM.</p>
+        <p>Early pay is a simple idea: instead of waiting 30, 60, or 90 days for your customer to pay an invoice, you get the cash now from an institutional investor. Your customer still pays on their normal schedule. You skip the wait.</p>
+        <a href="resources.html" class="btn-secondary-sm">Learn more in our Resources hub <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <div class="ep-v1__faq">
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>
+              What is OneAM early pay?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Early pay lets you get paid on your invoices now, instead of waiting 30, 60, or 90 days for your customer to pay. An institutional investor advances you the cash, and your customer pays on their normal schedule. </p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              What is invoice / receivables financing?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Invoice / receivables financing is another term for early pay. It's the broad category of products that let businesses get paid earlier on outstanding invoices.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              How is OneAM different from a traditional factor?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Traditional factors can be slow, expensive, and disruptive — they often take over your customer relationships. OneAM is built on modern infrastructure with quantitative risk assessment, transparent pricing, and zero customer disruption.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Are there minimums or commitments?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>No. There are no monthly minimums, no long-term contracts, and no penalties for using OneAM occasionally instead of constantly.</p>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     VERSION 2
+     ========================================== -->
+<div class="variant-label">Version 2 — Card-wrapped FAQ items</div>
+
+<section class="ep-v2">
+  <div class="container">
+    <div class="ep-v1__layout">
+
+      <div class="ep-v1__text">
+        <h2>New to early pay?</h2>
+        <p>If this is the first time you've heard the term, you're not alone. Most business owners haven't — and that's exactly why we built OneAM.</p>
+        <p>Early pay is a simple idea: instead of waiting 30, 60, or 90 days for your customer to pay an invoice, you get the cash now from an institutional investor. Your customer still pays on their normal schedule. You skip the wait.</p>
+        <a href="resources.html" class="btn-secondary-sm">Learn more in our Resources hub <span class="arrow">&rarr;</span></a>
+      </div>
+
+      <div class="ep-v1__faq">
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>
+              What is OneAM early pay?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Early pay lets you get paid on your invoices now, instead of waiting 30, 60, or 90 days for your customer to pay. An institutional investor advances you the cash, and your customer pays on their normal schedule.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              What is invoice / receivables financing?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Invoice / receivables financing is another term for early pay. It's the broad category of products that let businesses get paid earlier on outstanding invoices.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              How is OneAM different from a traditional factor?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Traditional factors can be slow, expensive, and disruptive — they often take over your customer relationships. OneAM is built on modern infrastructure with quantitative risk assessment, transparent pricing, and zero customer disruption.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Are there minimums or commitments?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>No. There are no monthly minimums, no long-term contracts, and no penalties for using OneAM occasionally instead of constantly.</p>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     VERSION 3
+     ========================================== -->
+<div class="variant-label">Version 3 — Centered header + borderless FAQ + fuchsia plus</div>
+
+<section class="ep-v3">
+  <div class="container">
+    <div class="ep-v3__inner">
+
+      <div class="ep-v3__header">
+        <h2>New to early pay?</h2>
+        <p>If this is the first time you've heard the term, you're not alone. Most business owners haven't — and that's exactly why we built OneAM.</p>
+        <p>Early pay is a simple idea: instead of waiting 30, 60, or 90 days for your customer to pay an invoice, you get the cash now from an institutional investor. Your customer still pays on their normal schedule. You skip the wait.</p>
+      </div>
+
+      <div class="ep-v3__faqs">
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>
+              What is OneAM early pay?
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Early pay lets you get paid on your invoices now, instead of waiting 30, 60, or 90 days for your customer to pay. An institutional investor advances you the cash, and your customer pays on their normal schedule.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              What is invoice / receivables financing?
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Invoice / receivables financing is another term for early pay. It's the broad category of products that let businesses get paid earlier on outstanding invoices.</p>
+              </div>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              How is OneAM different from a traditional factor?
+              <span class="faq-plus">+</span>
+            </summary>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                <p>Traditional factors can be slow, expensive, and disruptive — they often take over your customer relationships. OneAM is built on modern infrastructure with quantitative risk assessment, transparent pricing, and zero customer disruption.</p>
+              </div>
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <a href="resources.html" class="btn-secondary-sm">Learn more in our Resources hub <span class="arrow">&rarr;</span></a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.ep-v1, .ep-v2, .ep-v3').forEach(function(section) {
+  var items = section.querySelectorAll('.faq-item');
+
+  function closeItem(item) {
+    var wrapper = item.querySelector('.faq-answer-wrapper');
+    wrapper.style.gridTemplateRows = '0fr';
+    wrapper.addEventListener('transitionend', function handler() {
+      item.open = false;
+      wrapper.removeEventListener('transitionend', handler);
+    }, { once: true });
+  }
+
+  items.forEach(function(details) {
+    var summary = details.querySelector('summary');
+    var wrapper = details.querySelector('.faq-answer-wrapper');
+    summary.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (details.open) {
+        closeItem(details);
+      } else {
+        items.forEach(function(other) {
+          if (other !== details && other.open) closeItem(other);
+        });
+        details.open = true;
+        wrapper.offsetHeight;
+        wrapper.style.gridTemplateRows = '1fr';
+      }
+    });
+  });
+});
+</script>
+</html>
