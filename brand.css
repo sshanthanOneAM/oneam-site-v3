@@ -119,6 +119,9 @@
      and text on dark backgrounds. Never hardcode rgba().       */
 
   /* Fuchsia alphas */
+  --fuchsia-alpha-70: rgba(195, 60, 210, 0.70);
+  --fuchsia-alpha-60: rgba(195, 60, 210, 0.60);
+  --fuchsia-alpha-50: rgba(195, 60, 210, 0.50);
   --fuchsia-alpha-35: rgba(195, 60, 210, 0.35);
   --fuchsia-alpha-30: rgba(195, 60, 210, 0.30);
   --fuchsia-alpha-20: rgba(195, 60, 210, 0.20);
@@ -140,6 +143,10 @@
   --white-10: rgba(255, 255, 255, 0.10);
   --white-08: rgba(255, 255, 255, 0.08);
 
+  /* Teal alphas */
+  --teal-alpha-70: rgba(60, 195, 210, 0.70);
+  --teal-alpha-60: rgba(60, 195, 210, 0.60);
+  --teal-alpha-50: rgba(60, 195, 210, 0.50);
   --teal-alpha-35: rgba(60, 195, 210, 0.35);
   --teal-alpha-30: rgba(60, 195, 210, 0.30);
   --teal-alpha-20: rgba(60, 195, 210, 0.20);

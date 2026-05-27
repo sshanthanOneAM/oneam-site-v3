@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OneAM V3 — Design Review</title>
+  <title>OneAM V3 — Mockup Review</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -221,18 +221,18 @@
   <main>
     <section class="hero">
       <p class="hero-eyebrow">OneAM — V3 Design Review</p>
-      <h1>Homepage, Title &amp; Section Variants</h1>
-      <p class="hero-note">One full homepage mockup plus focused explorations of the hero title treatment, early pay section, and "Why OneAM" section. Font shown is Nunito — the closest web-safe approximation to the OneAM brand font Boing. Click any card to view the full page.</p>
+      <h1>Homepage Mockups &amp; Linked Page Variants</h1>
+      <p class="hero-note">A review hub for the two full homepage directions plus the linked title, resources, and insights pages. The homepage layout stays the same here; this index now points to the current destination pages and updated preview copy.</p>
     </section>
 
-    <div class="section-header"><h2>Full Homepage Mockup</h2></div>
-    <section class="cards cards--single" id="mockup-cards"></section>
+    <div class="section-header"><h2>Full Homepage Mockups</h2></div>
+    <section class="cards" id="mockup-cards"></section>
 
-    <div class="section-header"><h2>Early Pay Section Variants</h2></div>
-    <section class="cards cards--single" id="early-pay-cards"></section>
+    <div class="section-header"><h2>Hero Title Variants</h2></div>
+    <section class="cards cards--single" id="title-cards"></section>
 
-    <div class="section-header"><h2>"Why OneAM" Section Variants</h2></div>
-    <section class="cards cards--four" id="why-cards"></section>
+    <div class="section-header"><h2>Resources &amp; Insights Pages</h2></div>
+    <section class="cards" id="content-cards"></section>
   </main>
 
   <script>
@@ -241,46 +241,40 @@
 
     const MOCKUPS = [
       {
-        label: 'Full Mockup',
-        title: 'Navy — Complete Homepage',
-        file: 'Navy_mockup.html',
-        description: 'The complete V3 homepage in the navy direction — full page from nav through footer. Integrates the refined hero, product explainer, early pay section, and "Why OneAM" treatment into a single cohesive flow.',
+        label: 'Homepage Mockup',
+        title: 'Navy Homepage',
+        file: 'Navy-mockup.html',
+        description: 'The full navy homepage direction from navigation through footer, with the darker framing, core product story, FAQ entry point, and supporting sections presented as one complete flow.',
+      },
+      {
+        label: 'Homepage Mockup',
+        title: 'White Homepage',
+        file: 'White-mockup.html',
+        description: 'The full light homepage direction using the same overall structure, translated into the white-led visual system with linked resources and insights sections included.',
       },
     ];
 
-    const EARLY_PAY = [
+    const TITLES = [
       {
-        label: 'Early Pay Variants',
-        title: 'Early Pay Section — All Variants',
-        file: 'early-pay-variants.html',
-        description: 'Side-by-side explorations of the early pay section layout — comparing different approaches to presenting the accelerated payment mechanism, fee structure, and call to action.',
+        label: 'Linked Page',
+        title: 'Hero Title Variants',
+        file: 'title-variants.html',
+        description: 'A focused exploration of headline treatments for the homepage hero, comparing spacing, line breaks, and navigation context while staying inside the current design language.',
       },
     ];
 
-    const WHY = [
+    const CONTENT = [
       {
-        label: 'Why — Variant A',
-        title: 'Alternating Layout',
-        file: 'why-A-alternating.html',
-        description: 'Each "why" reason alternates between left- and right-aligned content with an accompanying visual — creates a zigzag reading rhythm and gives each benefit room to breathe.',
+        label: 'Linked Page',
+        title: 'Resources / FAQ Variants',
+        file: 'resources-variants.html',
+        description: 'Three resources-page approaches built around the FAQ and early-pay explainer content, showing different ways to introduce the concept and guide visitors deeper into the hub.',
       },
       {
-        label: 'Why — Variant B',
-        title: 'Horizontal Rows',
-        file: 'why-B-rows.html',
-        description: 'Benefits stacked as clean horizontal rows with an icon, headline, and description in a single line. Compact, scannable, and efficient — suited to a page where this section is secondary.',
-      },
-      {
-        label: 'Why — Variant C',
-        title: 'Card Grid',
-        file: 'why-C-cards.html',
-        description: 'Each benefit presented as a standalone card in a 2×2 grid. Cards create clear visual separation and allow each reason to feel self-contained — good for audiences who skim rather than read.',
-      },
-      {
-        label: 'Why — Variant D',
-        title: 'Centered Icons',
-        file: 'why-D-circle.html',
-        description: 'Centered layout with large circular icon treatments above each benefit. The symmetry creates a formal, polished feel — works well when the four reasons are equally weighted in importance.',
+        label: 'Linked Page',
+        title: 'Insights / Blog Variants',
+        file: 'insights-variants.html',
+        description: 'Editorial layouts for the insights page, featuring article-card treatments and calls to explore more content from the OneAM team.',
       },
     ];
 
@@ -308,8 +302,8 @@
     }
 
     document.getElementById('mockup-cards').innerHTML    = MOCKUPS.map(createCard).join('');
-    document.getElementById('early-pay-cards').innerHTML = EARLY_PAY.map(createCard).join('');
-    document.getElementById('why-cards').innerHTML      = WHY.map(createCard).join('');
+    document.getElementById('title-cards').innerHTML     = TITLES.map(createCard).join('');
+    document.getElementById('content-cards').innerHTML   = CONTENT.map(createCard).join('');
 
     const frames = document.querySelectorAll('.preview-frame');
     frames.forEach(scaleFrame);
